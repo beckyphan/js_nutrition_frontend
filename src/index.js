@@ -1,3 +1,5 @@
+const usersPath = "http://localhost:3000/api/v1/users"
+
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav')
   const loginOrRegisterButton = document.getElementById("loginOrRegisterButton")
@@ -84,4 +86,43 @@ document.addEventListener('DOMContentLoaded', () => {
     listenForLogin()
   }
 
+  nav.addEventListener("submit", (e) => {
+    e.preventDefault()
+    console.log("submit button clicked")
+    let valuesCollected = e.srcElement.length
+
+    let inputsCollected = []
+
+    for (let i = 0; i < valuesCollected - 1; i++) {
+      inputsCollected.push(e.srcElement[i].value)
+    }
+
+    // function loginUser(email, password) {
+    //   const bodyData = {user: {email, password} }
+    //
+    //   let configObj = {
+    //     method: "POST",
+    //     headers: {"Content-Type": "application/json"},
+    //     body: JSON.stringify(bodyData)
+    //   }
+    //
+    //   console.log(bodyData)
+    //
+    //   fetch(usersPath, configObj)
+    //   .then(resp => {return resp.json()})
+    //   .then(json => {console.log("fetchedUser")})
+    // }
+
+    function registerUser() {
+
+    }
+
+    if (inputsCollected < 3) {
+      // loginUser(inputsCollected[0], inputsCollected[1])
+      console.log("Welcome Existing User")
+    } else {
+      console.log("Welcome New User")
+    }
+
+  })
 })

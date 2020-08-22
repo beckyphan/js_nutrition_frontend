@@ -1,33 +1,17 @@
-const usersPath = "http://localhost:3000/users"
+class User {
 
-document.addEventListener('DOMContentLoaded', () => {
-  const nav = document.querySelector('nav')
+  constructor(user, userAttributes) {
+    this.id = user.id
+    this.name = userAttributes.name
+    this.email = userAttributes.email
+    this.password = userAttributes.password
+    this.carb_grams = userAttributes.carb_grams
+    this.protein_grams = userAttributes.protein_grams
+    this.fat_grams = userAttributes.fat_grams
 
-  nav.addEventListener("submit", (e) => {
-    e.preventDefault()
-    console.log("submit button clicked")
-    let valuesCollected = e.srcElement.length
+    User.all.push(this)
+  }
 
-    let inputsCollected = []
+}
 
-    for (let i = 0; i < valuesCollected - 1; i++) {
-      inputsCollected.push(e.srcElement[i].value)
-    }
-
-    console.log(inputsCollected)
-
-    if (inputsCollected < 3) {
-      console.log("Welcome Existing User")
-    } else {
-      console.log("Welcome New User")
-    }
-
-    function loginUser() {
-
-    }
-
-    function registerUser() {
-      
-    }
-  })
-})
+User.all = [];
