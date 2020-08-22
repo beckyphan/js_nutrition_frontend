@@ -15,6 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     console.log(inputsCollected)
-  })
 
+    if (inputsCollected < 3) {
+      console.log("Welcome Existing User")
+    } else {
+      console.log("Welcome New User")
+    }
+
+    function loginUser() {
+
+    }
+
+    function registerUser() {
+      
+    }
+  })
 })
