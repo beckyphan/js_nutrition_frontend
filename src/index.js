@@ -1,5 +1,3 @@
-const usersPath = "http://localhost:3000/users"
-
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav')
   const loginOrRegisterButton = document.getElementById("loginOrRegisterButton")
@@ -80,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </form>
       </div>
       <div>
-        <h3>or...<button id="loginButton">Log In</button></h3>
+        <h3>or... <button id="loginButton">Log In</button></h3>
       </div>
       `
     listenForLogin()
