@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <h2>Login</h2>
         <form class="login-form">
           <input type="text" name="email" value="" placeholder="email" class="input-text"/>
-          <input type="text" name="password" value="" placeholder="password" class="input-text"/>
+          <input type="password" name="password" value="" placeholder="password" class="input-text"/>
           <input type="submit" name="submit" value="Submit" class="submit" />
         </form>
       </div>
