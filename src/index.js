@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div id="login">
       <h2>Login</h2>
         <form class="login-form">
-          <input type="text" name="email" value="" placeholder="email" class="input-text"/>
-          <input type="password" name="password" value="" placeholder="password" class="input-text"/>
+          <input type="text" name="email" value="" placeholder="email" class="input-text" required="required"/>
+          <input type="password" name="password" value="" placeholder="password" class="input-text" required="required"/>
           <input type="submit" name="submit" value="Submit" class="submit" />
         </form>
       </div>
@@ -56,22 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
         <h2>Register New User</h2>
         <form class="login-form">
           <label for="[user]name">Name:</label>
-          <input type="text" name="[user]name" value="" placeholder="name" class="input-text"/>
+          <input type="text" name="[user]name" value="" placeholder="name" class="input-text" required="required"/>
           <label for="[user]email">E-mail:</label>
-          <input type="text" name="[user]email" value="" placeholder="email" class="input-text"/>
+          <input type="text" name="[user]email" value="" placeholder="email" class="input-text" required="required"/>
           </br>
 
           <label for="[user]carb_grams">Daily Carbs (g) Target:</label>
-          <input type="text" name="[user]carb_grams" value="" placeholder="300" class="input-text"/></br>
+          <input type="text" name="[user]carb_grams" value="" placeholder="300" class="input-text" required="required"/></br>
 
           <label for="[user]protein_grams">Daily Protein (g) Target:</label>
-          <input type="text" name="[user]protein_grams" value="" placeholder="50" class="input-text"/></br>
+          <input type="text" name="[user]protein_grams" value="" placeholder="50" class="input-text" required="required"/></br>
 
           <label for="[user]fat_grams">Daily Fat (g) Target:</label>
-          <input type="text" name="[user]fat_grams" value="" placeholder="60" class="input-text"/></br>
+          <input type="text" name="[user]fat_grams" value="" placeholder="60" class="input-text" required="required"/></br>
 
           <label for="[user]password">Password:</label>
-          <input type="password" name="[user]password" value="" placeholder="password" class="input-text"/>
+          <input type="password" name="[user]password" value="" placeholder="password" class="input-text" required="required"/>
           </br>
 
           <input type="submit" name="submit" value="Submit" class="submit" />
