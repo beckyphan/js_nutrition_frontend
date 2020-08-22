@@ -1,6 +1,7 @@
 const usersPath = "http://localhost:3000/users"
 
 document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('nav')
   const loginOrRegisterButton = document.getElementById("loginOrRegisterButton")
 
   loginOrRegisterButton.addEventListener("click", (e) => {
@@ -11,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function showRegisterOrLogin() {
-  const nav = document.querySelector('nav')
   nav.innerHTML = `
     <button id="loginButton">Log In</button>
     <button id="registerButton">Register</button>
@@ -23,12 +23,13 @@ function showRegisterOrLogin() {
   loginButton.addEventListener("click", (e) => {
     showLoginForm()
   })
+
+  registerButton.addEventListener("click", (e) => {
+    showRegisterForm()
+  })
 }
 
 function showLoginForm() {
-  console.log("showLoginForm")
-  const nav = document.querySelector('nav')
-
   nav.innerHTML = `
     <div id="login">
       <form class="login-form">
@@ -38,4 +39,8 @@ function showLoginForm() {
       </form>
     </div>
     `
+}
+
+function showRegisterForm() {
+
 }
