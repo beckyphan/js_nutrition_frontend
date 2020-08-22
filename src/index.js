@@ -5,10 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const loginOrRegisterButton = document.getElementById("loginOrRegisterButton")
 
   loginOrRegisterButton.addEventListener("click", (e) => {
-    e.preventDefault()
     showRegisterOrLogin()
   })
 
+  function listenForLogin() {
+      loginButton.addEventListener("click", (e) => {
+      showLoginForm()
+    })
+  }
+
+ function listenForRegister() {
+      registerButton.addEventListener("click", (e) => {
+      showRegisterForm()
+    })
+  }
 
 
   function showRegisterOrLogin() {
@@ -20,25 +30,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginButton = document.querySelector('#loginButton')
     const registerButton = document.querySelector('#registerButton')
 
-    loginButton.addEventListener("click", (e) => {
-      showLoginForm()
-    })
+    listenForLogin()
+    listenForRegister()
 
-    registerButton.addEventListener("click", (e) => {
-      showRegisterForm()
-    })
   }
 
   function showLoginForm() {
     nav.innerHTML = `
       <div id="login">
+      <h2>Login</h2>
         <form class="login-form">
           <input type="text" name="email" value="" placeholder="email" class="input-text"/>
           <input type="text" name="password" value="" placeholder="password" class="input-text"/>
           <input type="submit" name="submit" value="Submit" class="submit" />
         </form>
       </div>
+      <div>
+        <h3>or... <button id="registerButton">Register</button></h3>
+      </div>
       `
+    listenForRegister()
   }
 
   function showRegisterForm() {
@@ -68,7 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <input type="submit" name="submit" value="Submit" class="submit" />
         </form>
       </div>
+      <div>
+        <h3>or...<button id="loginButton">Log In</button></h3>
+      </div>
       `
+    listenForLogin()
   }
 
 })
