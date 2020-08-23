@@ -4,7 +4,6 @@ class User {
     this.id = user.id
     this.name = userAttributes.name
     this.email = userAttributes.email
-    this.password = userAttributes.password
     this.carb_grams = userAttributes.carb_grams
     this.protein_grams = userAttributes.protein_grams
     this.fat_grams = userAttributes.fat_grams
@@ -17,7 +16,6 @@ class User {
   }
 
   renderUser() {
-    console.log("renderUser")
     return `
       <h3>Welcome, ${this.name}! </h3>
       <div class="nutritionTargets">
