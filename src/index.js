@@ -2,6 +2,7 @@ const usersPath = "http://localhost:3000/api/v1/users"
 
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav')
+  const userProf = document.querySelector('#userInfo')
   const loginOrRegisterButton = document.getElementById("loginOrRegisterButton")
 
   loginOrRegisterButton.addEventListener("click", (e) => {
@@ -108,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function loginUser(email, password) {
       console.log("loginUser")
       const bodyData = {user: {email, password} }
-      console.log(bodyData)
 
       let configObj = {
         method: "POST",
@@ -118,26 +118,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       fetch(usersPath, configObj)
       .then(resp => resp.json())
-      .then(json => {
-        console.log(user)
-        let userData = user.data
+      .then(userObj => {
+        console.log(userObj)
         // find existing user object from User.all array
 
         nav.innerHTML = `
           <span>
-            <!-- DISPLAY USER HERE <h3>Welcome back, </h3> -->
-          </span>
-          <span>
             <button id='logout'>Log Out</button>
           </span>
           `
+
+        // renderUser()
       })
     }
 
     function registerUser(name, email, carb_grams, protein_grams, fat_grams, password) {
       console.log("registerUser")
       const bodyData = {user: {name, email, carb_grams, protein_grams, fat_grams, password} }
-      console.log(bodyData)
 
       let configObj = {
         method: "POST",
@@ -147,7 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       fetch(usersPath, configObj)
       .then(resp => resp.json())
-      .then(json => {console.log(json)})
+      .then(userObj => {
+        const userData = userObj.user.data
+        let user = new User(userData,userData.attributes)
+        
+        userProf.innerHTML = user.renderUser()
+      })
     }
 
   })
