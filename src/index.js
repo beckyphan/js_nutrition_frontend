@@ -1,4 +1,5 @@
 const usersPath = "http://localhost:3000/api/v1/users"
+const loginPath = "http://localhost:3000/api/v1/login"
 
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav')
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loginUser(email, password) {
       console.log("loginUser")
+
       const bodyData = {user: {email, password} }
 
       let configObj = {
@@ -115,11 +117,11 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(bodyData)
       }
 
-      fetch(usersPath, configObj)
+      fetch(loginPath, configObj)
       .then(resp => resp.json())
       .then(userObj => {
-        console.log(userObj)
-        // find existing user object from User.all array
+        const userData = userObj.user.data
+        let user = new User(userData,userData.attributes)
 
         nav.innerHTML = `
           <span>
@@ -127,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </span>
           `
 
-        // renderUser()
+        userProf.innerHTML = user.renderUser()
       })
     }
 
