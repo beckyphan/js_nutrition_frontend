@@ -1,5 +1,4 @@
 const usersPath = "http://localhost:3000/api/v1/users"
-const loginPath = "http://localhost:3000/api/v1/login"
 
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav')
@@ -108,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loginUser(email, password) {
       console.log("loginUser")
-
       const bodyData = {user: {email, password} }
 
       let configObj = {
@@ -117,19 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(bodyData)
       }
 
-      fetch(loginPath, configObj)
+      fetch(usersPath, configObj)
       .then(resp => resp.json())
       .then(userObj => {
-        const userData = userObj.user.data
-        let user = new User(userData,userData.attributes)
-
-        nav.innerHTML = `
-          <span>
-            <button id='logout'>Log Out</button>
-          </span>
-          `
-
-        userProf.innerHTML = user.renderUser()
+        displayUserProfile(userObj)
       })
     }
 
@@ -145,17 +134,25 @@ document.addEventListener('DOMContentLoaded', () => {
       fetch(usersPath, configObj)
       .then(resp => resp.json())
       .then(userObj => {
-        const userData = userObj.user.data
-        let user = new User(userData,userData.attributes)
-
-        nav.innerHTML = `
-          <span>
-            <button id='logout'>Log Out</button>
-          </span>
-          `
-
-        userProf.innerHTML = user.renderUser()
+        displayUserProfile(userObj)
       })
+    }
+
+    function displayUserProfile(userObj) {
+      const userData = userObj.user.data
+      let user = new User(userData,userData.attributes)
+
+      displayLogoutButton()
+
+      userProf.innerHTML = user.renderUser()
+    }
+
+    function displayLogoutButton() {
+      nav.innerHTML = `
+        <span>
+          <button id='logout'>Log Out</button>
+        </span>
+        `
     }
 
   })
