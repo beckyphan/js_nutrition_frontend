@@ -7,12 +7,6 @@ class User {
     this.carb_grams = userAttributes.carb_grams
     this.protein_grams = userAttributes.protein_grams
     this.fat_grams = userAttributes.fat_grams
-
-    console.log(this)
-
-    // if user does not already exist, push to User.all
-    // User.all.push(this)
-    // else do not push to User.all
   }
 
   renderUser() {
