@@ -117,8 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       fetch(usersPath, configObj)
-      .then(resp => {return resp.json()})
-      .then(json => {console.log("fetchedExistingUser")})
+      .then(resp => resp.json())
+      .then(json => {console.log(json)})
     }
 
     function registerUser(name, email, carb_grams, protein_grams, fat_grams, password) {
@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       fetch(usersPath, configObj)
-      .then(resp => {return resp.json()})
-      .then(json => {console.log("fetchedRegisteredUser")})
+      .then(resp => resp.json())
+      .then(json => {console.log(json)})
     }
 
   })
