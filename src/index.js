@@ -101,13 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (inputsCollected.length < 3) {
       loginUser(inputsCollected[0], inputsCollected[1])
-      console.log("Welcome Existing User")
     } else {
       registerUser(inputsCollected[0], inputsCollected[1], inputsCollected[2], inputsCollected[3], inputsCollected[4], inputsCollected[5])
     }
 
     function loginUser(email, password) {
-      console.log("loginUser")
       const bodyData = {user: {email, password} }
 
       let configObj = {
@@ -140,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayUserProfile(userObj) {
-      console.log(userObj)
       const userData = userObj.user.data
       let user = new User(userData,userData.attributes)
 
