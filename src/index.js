@@ -193,11 +193,18 @@ document.addEventListener('DOMContentLoaded', () => {
     logDivFirstSpan.addEventListener("submit", (e) => {
       e.preventDefault()
       console.log("create new log and display here")
+      // displayUserLog()
     })
   }
 
   function displayUserLog() {
-
+    // use fetch to post new log
+    // replace logDivFirstSpan.innerHTML to display the new log within a span/container
+    // display button to add foods
+    // add food button will create a span (use css to show spans side by side within a span/container)
+    // the new span will display the foods index
+    // clicking on any food from food-span will add the food to the log span
+    // clicking on any food from food-span will also user fetch to post new food-log to update associations
   }
 
 })
