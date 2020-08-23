@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav')
   const userProf = document.querySelector('#userInfo')
   const loginOrRegisterButton = document.getElementById("loginOrRegisterButton")
+  const currentLogDiv = document.querySelector('.current-log')
 
   loginOrRegisterButton.addEventListener("click", (e) => {
     showRegisterOrLogin()
@@ -101,13 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (inputsCollected.length < 3) {
       loginUser(inputsCollected[0], inputsCollected[1])
-      console.log("Welcome Existing User")
     } else {
       registerUser(inputsCollected[0], inputsCollected[1], inputsCollected[2], inputsCollected[3], inputsCollected[4], inputsCollected[5])
     }
 
     function loginUser(email, password) {
-      console.log("loginUser")
       const bodyData = {user: {email, password} }
 
       let configObj = {
@@ -140,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayUserProfile(userObj) {
-      console.log(userObj)
       const userData = userObj.user.data
       let user = new User(userData,userData.attributes)
 
@@ -152,11 +150,50 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayLogoutButton() {
       nav.innerHTML = `
         <span>
-          <button id='logout'>Log Out</button>
+          <input type="button" id="logout" value="Log Out" onClick="document.location.reload(true)">
         </span>
         `
+      const logOut = document.querySelector('#logout')
+      
+      displayNewLogButton(logOut)
     }
 
+
+
   })
+
+  function displayNewLogButton(logOut) {
+    currentLogDiv.innerHTML += `
+      <span>
+        <button id='newLog'>New Log</button>
+      </span>
+    `
+
+    const newLogButton = document.querySelector('#newLog')
+
+    newLogButton.addEventListener("click", (e) => {
+      displayNewLogForm()
+    })
+  }
+
+  function displayNewLogForm() {
+    const logDivFirstSpan = currentLogDiv.querySelector('span')
+    logDivFirstSpan.innerHTML = `
+      <form class="log-form">
+        <label for="[log]caldate">Date:</label>
+        <input type="date" name="[log]caldate" value="" class="input-text" required="required"/></br>
+        <input type="submit" name="submit" value="Submit" class="submit" />
+      </form>
+    `
+
+    logDivFirstSpan.addEventListener("submit", (e) => {
+      e.preventDefault()
+      console.log("create new log and display here")
+    })
+  }
+
+  function displayUserLog() {
+
+  }
 
 })
