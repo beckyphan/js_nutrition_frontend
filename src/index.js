@@ -103,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log("Welcome Existing User")
     } else {
       registerUser(inputsCollected[0], inputsCollected[1], inputsCollected[2], inputsCollected[3], inputsCollected[4], inputsCollected[5])
-      console.log("Welcome New User")
     }
 
     function loginUser(email, password) {
@@ -133,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function registerUser(name, email, carb_grams, protein_grams, fat_grams, password) {
-      console.log("registerUser")
       const bodyData = {user: {name, email, carb_grams, protein_grams, fat_grams, password} }
 
       let configObj = {
@@ -147,7 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(userObj => {
         const userData = userObj.user.data
         let user = new User(userData,userData.attributes)
-        
+
+        nav.innerHTML = `
+          <span>
+            <button id='logout'>Log Out</button>
+          </span>
+          `
+
         userProf.innerHTML = user.renderUser()
       })
     }
