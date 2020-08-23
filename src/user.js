@@ -9,7 +9,9 @@ class User {
     this.protein_grams = userAttributes.protein_grams
     this.fat_grams = userAttributes.fat_grams
 
-    User.all.push(this)
+    // if user does not already exist, push to User.all
+    // User.all.push(this)
+    // else do not push to User.all
   }
 
 }

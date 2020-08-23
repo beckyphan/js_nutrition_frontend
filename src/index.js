@@ -118,7 +118,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       fetch(usersPath, configObj)
       .then(resp => resp.json())
-      .then(json => {console.log(json)})
+      .then(json => {
+        console.log(user)
+        let userData = user.data
+        // find existing user object from User.all array
+
+        nav.innerHTML = `
+          <span>
+            <!-- DISPLAY USER HERE <h3>Welcome back, </h3> -->
+          </span>
+          <span>
+            <button id='logout'>Log Out</button>
+          </span>
+          `
+      })
     }
 
     function registerUser(name, email, carb_grams, protein_grams, fat_grams, password) {
