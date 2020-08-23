@@ -118,16 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fetch(usersPath, configObj)
       .then(resp => resp.json())
       .then(userObj => {
-        console.log(userObj)
-        // find existing user object from User.all array
-
-        nav.innerHTML = `
-          <span>
-            <button id='logout'>Log Out</button>
-          </span>
-          `
-
-        // renderUser()
+        displayUserProfile(userObj)
       })
     }
 
@@ -143,17 +134,25 @@ document.addEventListener('DOMContentLoaded', () => {
       fetch(usersPath, configObj)
       .then(resp => resp.json())
       .then(userObj => {
-        const userData = userObj.user.data
-        let user = new User(userData,userData.attributes)
-
-        nav.innerHTML = `
-          <span>
-            <button id='logout'>Log Out</button>
-          </span>
-          `
-
-        userProf.innerHTML = user.renderUser()
+        displayUserProfile(userObj)
       })
+    }
+
+    function displayUserProfile(userObj) {
+      const userData = userObj.user.data
+      let user = new User(userData,userData.attributes)
+
+      displayLogoutButton()
+
+      userProf.innerHTML = user.renderUser()
+    }
+
+    function displayLogoutButton() {
+      nav.innerHTML = `
+        <span>
+          <button id='logout'>Log Out</button>
+        </span>
+        `
     }
 
   })
