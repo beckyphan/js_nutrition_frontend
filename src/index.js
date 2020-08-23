@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loginUser(inputsCollected[0], inputsCollected[1])
       console.log("Welcome Existing User")
     } else {
+      registerUser(inputsCollected[0], inputsCollected[1], inputsCollected[2], inputsCollected[3], inputsCollected[4], inputsCollected[5])
       console.log("Welcome New User")
     }
 
@@ -117,11 +118,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       fetch(usersPath, configObj)
       .then(resp => {return resp.json()})
-      .then(json => {console.log("fetchedUser")})
+      .then(json => {console.log("fetchedExistingUser")})
     }
 
-    function registerUser() {
+    function registerUser(name, email, carb_grams, protein_grams, fat_grams, password) {
+      console.log("registerUser")
+      const bodyData = {user: {name, email, carb_grams, protein_grams, fat_grams, password} }
+      console.log(bodyData)
 
+      let configObj = {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+      }
+
+      fetch(usersPath, configObj)
+      .then(resp => {return resp.json()})
+      .then(json => {console.log("fetchedRegisteredUser")})
     }
 
   })
