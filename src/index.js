@@ -1,4 +1,5 @@
 const usersPath = "http://localhost:3000/api/v1/users"
+const loginPath = "http://localhost:3000/api/v1/login"
 
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav')
@@ -115,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(bodyData)
       }
 
-      fetch(usersPath, configObj)
+      fetch(loginPath, configObj)
       .then(resp => resp.json())
       .then(userObj => {
         displayUserProfile(userObj)
@@ -139,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayUserProfile(userObj) {
+      console.log(userObj)
       const userData = userObj.user.data
       let user = new User(userData,userData.attributes)
 
