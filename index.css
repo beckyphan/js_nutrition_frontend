@@ -1,3 +1,10 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3031&q=80");
+  background-repeat: no-repeat;
+  background-position: left top;
+  font-family: 'Alata', sans-serif;
+}
+
 nav {
   display: flex;
   justify-content: flex-end;
@@ -15,8 +22,10 @@ div#userInfo {
 }
 
 div.nutritionTargets {
+  background: white;
+  border-radius: 25px;
+  border: 3px solid gold;
   text-align:center;
-  margin: 0 auto;
   width: 100%;
   display: flex;
 }
@@ -27,11 +36,14 @@ div.nutritionTargets {
 }
 
 div.logs-container {
-  width: 100%;
-  margin: 0 auto;
   padding: 10px;
 }
 
 form.log-form {
+  margin: 0 auto;
+  padding: 25px;
+  background: white;
+  border-radius: 50px;
+  border: 3px solid gold;
   text-align:center;
 }
