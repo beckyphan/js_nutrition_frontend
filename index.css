@@ -38,7 +38,7 @@ input[type=button]:hover, input[type=submit]:hover, button:hover {
   color: black;
 }
 
-div#userInfo {
+div#userInfo, div.current-log {
   text-align:center;
   width: 100%;
 }
