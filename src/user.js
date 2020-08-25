@@ -1,3 +1,5 @@
+let currentUserId = 0;
+
 class User {
 
   constructor(user, userAttributes) {

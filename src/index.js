@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayUserProfile(userObj) {
       const userData = userObj.user.data
       let user = new User(userData,userData.attributes)
+      currentUserId = user.id
 
       displayLogoutButton()
 
@@ -192,19 +193,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     logDivFirstSpan.addEventListener("submit", (e) => {
       e.preventDefault()
-      console.log("create new log and display here")
-      // displayUserLog()
+      let caldate = e.srcElement[0].value
+      const newLogData = {log: {caldate}}
+      const logPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs`
+
+      let configObj = {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(newLogData)
+      }
+
+      fetch(logPath, configObj)
+      .then(resp => resp.json())
+      .then(logObj => {
+        // displayUserLog(logObj)
+      })
     })
   }
 
-  function displayUserLog() {
-    // use fetch to post new log
+  function displayUserLog(logObj) {
+      // data:
+      // attributes: {caldate: "2020-08-24"}
+      // id: "1"
+      // relationships:
+      // log_foods:
+      // data: Array(0)
     // replace logDivFirstSpan.innerHTML to display the new log within a span/container
     // display button to add foods
-    // add food button will create a span (use css to show spans side by side within a span/container)
-    // the new span will display the foods index
+    // display foods container on the side, with add food to log button
     // clicking on any food from food-span will add the food to the log span
-    // clicking on any food from food-span will also user fetch to post new food-log to update associations
+    // clicking on any food from food-span will also use fetch to post new food-log to update associations
   }
 
 })
