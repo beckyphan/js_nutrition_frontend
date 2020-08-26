@@ -1,5 +1,6 @@
 const usersPath = "http://localhost:3000/api/v1/users"
 const loginPath = "http://localhost:3000/api/v1/login"
+const foodsPath = "http://localhost:3000/api/v1/foods"
 
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav')
@@ -245,7 +246,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let columnDiv = document.querySelector('.columns')
     columnDiv.appendChild(newSpanElement)
 
-    currentLogDiv.querySelector('.column2').innerHTML = `DISPLAYING FOODS TABLE HERE`
+    currentLogDiv.querySelector('.column2').innerHTML = `<h3>Foods</h3>`
+    displayFoodItems()
+  }
+
+  function displayFoodItems() {
+    fetch(foodsPath)
+    .then(resp => resp.json())
+    .then(foodsObj => {
+      let location = currentLogDiv.querySelector('.column2')
+      for (element of foodsObj.data) {
+        let uniqFood = new Food(element, element.attributes)
+        uniqFood.renderFoodCard(location)
+      }
+    })
 
   }
 
