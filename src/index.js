@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function displayNewLogButton(logOut) {
     currentLogDiv.innerHTML += `
-      <span>
+      <span class='column1'>
         <button id='newLog'>New Log</button>
       </span>
     `
@@ -206,23 +206,32 @@ document.addEventListener('DOMContentLoaded', () => {
       fetch(logPath, configObj)
       .then(resp => resp.json())
       .then(logObj => {
-        // displayUserLog(logObj)
+        displayUserLog(logObj)
       })
     })
   }
 
   function displayUserLog(logObj) {
-      // data:
-      // attributes: {caldate: "2020-08-24"}
-      // id: "1"
-      // relationships:
-      // log_foods:
-      // data: Array(0)
-    // replace logDivFirstSpan.innerHTML to display the new log within a span/container
+    const logData = logObj.data
+    let log = new Log(logData, logData.attributes, logData.relationships.log_foods)
+    const logSpan = currentLogDiv.querySelector('span')
+    logSpan.innerHTML = log.renderLogDate()
+    logSpan.innerHTML += log.renderLoggedFoods()
+
+    displayFoodsTable(logSpan)
     // display button to add foods
     // display foods container on the side, with add food to log button
     // clicking on any food from food-span will add the food to the log span
     // clicking on any food from food-span will also use fetch to post new food-log to update associations
+  }
+
+  function displayFoodsTable(logSpan) {
+    logSpan.innerHTML += `
+      <span class="column2">
+        DISPLAYING FOODS TABLE HERE
+      </span>
+    `
+
   }
 
 })
