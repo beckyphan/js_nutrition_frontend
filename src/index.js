@@ -219,6 +219,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const logSpan = currentLogDiv.querySelector('span')
     logSpan.classList.add("style")
     logSpan.innerHTML = log.renderLogDate()
+    logSpan.innerHTML += `
+      <div class="percentage-carb">
+      </div>
+
+      <div class="percentage-protein">
+      </div>
+
+      <div class="percentage-fat">
+      </div>
+    `
     logSpan.innerHTML += log.renderLoggedFoods()
 
     displayFoodsTable()
