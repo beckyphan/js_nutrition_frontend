@@ -17,7 +17,7 @@ class User {
       <div class="nutritionTargets">
         <span>Carbs: ${this.carb_grams} grams</span>
         <span>Protein: ${this.protein_grams} grams</span>
-        <span>Fat: ${this.fat_grams}</span>
+        <span>Fat: ${this.fat_grams} grams</span>
       </div>
     `
   }
