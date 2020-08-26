@@ -169,9 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function displayNewLogButton(logOut) {
     currentLogDiv.innerHTML += `
+    <div class="columns">
       <span class='column1'>
         <button id='newLog'>New Log</button>
       </span>
+    </div>
     `
 
     const newLogButton = document.querySelector('#newLog')
@@ -215,22 +217,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const logData = logObj.data
     let log = new Log(logData, logData.attributes, logData.relationships.log_foods)
     const logSpan = currentLogDiv.querySelector('span')
+    logSpan.classList.add("style")
     logSpan.innerHTML = log.renderLogDate()
     logSpan.innerHTML += log.renderLoggedFoods()
 
-    displayFoodsTable(logSpan)
+    displayFoodsTable()
     // display button to add foods
     // display foods container on the side, with add food to log button
     // clicking on any food from food-span will add the food to the log span
     // clicking on any food from food-span will also use fetch to post new food-log to update associations
   }
 
-  function displayFoodsTable(logSpan) {
-    logSpan.innerHTML += `
-      <span class="column2">
-        DISPLAYING FOODS TABLE HERE
-      </span>
-    `
+  function displayFoodsTable() {
+    let newSpanElement = document.createElement("span")
+    newSpanElement.className = "column2"
+    newSpanElement.classList.add("style")
+    let columnDiv = document.querySelector('.columns')
+    columnDiv.appendChild(newSpanElement)
+
+    currentLogDiv.querySelector('.column2').innerHTML = `DISPLAYING FOODS TABLE HERE`
 
   }
 
