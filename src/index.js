@@ -222,12 +222,15 @@ document.addEventListener('DOMContentLoaded', () => {
     logSpan.innerHTML = log.renderLogDate()
     logSpan.innerHTML += `
       <div class="percentage-carb">
+        carb
       </div>
 
       <div class="percentage-protein">
+        protein
       </div>
 
       <div class="percentage-fat">
+        fat
       </div>
     `
     logSpan.innerHTML += log.renderLoggedFoods()
