@@ -236,10 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
     logSpan.innerHTML += log.renderLoggedFoods()
 
     displayFoodsTable()
-    // display button to add foods
-    // display foods container on the side, with add food to log button
-    // clicking on any food from food-span will add the food to the log span
-    // clicking on any food from food-span will also use fetch to post new food-log to update associations
   }
 
   function displayFoodsTable() {
