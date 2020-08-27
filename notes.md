@@ -14,7 +14,8 @@ Next steps:
  - display New Log/Show Log Button beneath .column1
  - if clicked, replace .column1 innerHTML to show datepicker accordingly
 
-stretch:
+other & stretch:
 - if user has an existing log for currentDate, then display upon login
 - user will be able to search through foods
-- user will be able to scroll through foods when list gets long, fixed height in css
+- parse date to display in user-friendly format
+- display nutritionSums percentage bars as progress bars
