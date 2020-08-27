@@ -1,4 +1,5 @@
 let currentUserId = 0;
+let userTargets = []
 
 class User {
 
@@ -9,6 +10,10 @@ class User {
     this.carb_grams = userAttributes.carb_grams
     this.protein_grams = userAttributes.protein_grams
     this.fat_grams = userAttributes.fat_grams
+
+    userTargets.push(this.carb_grams)
+    userTargets.push(this.protein_grams)
+    userTargets.push(this.fat_grams)
   }
 
   renderUser() {

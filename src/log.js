@@ -17,7 +17,6 @@ class Log {
     let loggedFoods = ""
     for (let i = 0; i < this.loggedFoods.length; i++) {
       loggedFoods += `<p> ${this.loggedFoods[i]}</p>`
-      console.log(this.loggedFoods[i])
     }
     return loggedFoods
   }
