@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentLogDiv.innerHTML += `
     <div class="columns">
       <span class='column1'>
-        <button id='newLog'>New Log</button>
+        <button id='newLog'>New Log/Show Log</button>
       </span>
     </div>
     `
