@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function displayUserLog(logObj) {
     const logData = logObj.data
-    let log = new Log(logData, logData.attributes, logData.relationships.log_foods)
+    let log = new Log(logData, logData.attributes)
     const logSpan = currentLogDiv.querySelector('span')
     logSpan.classList.add("style")
     logSpan.innerHTML = log.renderLogDate()
