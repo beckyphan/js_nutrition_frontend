@@ -21,7 +21,8 @@ class Food {
       </br>
       Carbs: ${this.carb} | Protein: ${this.protein} | Fat: ${this.fat}
       </span>
-      <button class="foodItem-${this.id}">Add</button>
+      </br>
+      <div><button class="foodItem ${this.id}">Add</button></div>
       </br>
     `
   }

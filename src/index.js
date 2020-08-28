@@ -1,6 +1,7 @@
 const usersPath = "http://localhost:3000/api/v1/users"
 const loginPath = "http://localhost:3000/api/v1/login"
 const foodsPath = "http://localhost:3000/api/v1/foods"
+const logFoodsPath = "http://localhost:3000/api/v1/log_foods"
 
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav')
@@ -249,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentLogDiv.querySelector('.column2').innerHTML = `<h3>Foods</h3>`
     displayFoodItems()
+    listenToAddFood()
   }
 
   function displayFoodItems() {
@@ -275,6 +277,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const fatPDV = document.querySelector('.percentage-fat')
     let fatPercent = log.totalFat/ userTargets[2]
     fatPDV.innerHTML = `fat: ${Math.round(fatPercent * 1000) / 10}%`
+  }
+
+  function listenToAddFood() {
+    let location = currentLogDiv.querySelector('.column2')
+    location.addEventListener("click", (e) => {
+      const foodItemButton = e.target.nodeName === "BUTTON"
+      if (!foodItemButton) {
+        return;
+      } else {
+        showAddQuantity(e.srcElement, e.srcElement.parentElement)
+      }
+    })
+  }
+
+  function showAddQuantity(button, buttonDiv) {
+    let foodId = button.classList[1]
+
+    fetch(foodsPath)
+    .then(resp => resp.json())
+    .then(obj => {
+      buttonDiv.innerHTML = `
+      <form class="addToLog ${button.classList[1]}">
+        <label for="[log_food]quantity">Qty:</label>
+        <input type="number" name="[log_food]quantity" value="" placeholder="${obj.data[foodId-1].attributes.unit}" required="required"/>
+        <input type="submit" name="submit" value="Submit" class="submit" />
+      </form>
+      `
+    })
+
+    buttonDiv.addEventListener("submit", (e) => {
+      let configObj = {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(logFoodData)
+      }
+
+      let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, logDate: document.querySelector('h3').innerText}
+
+      fetch(logFoodsPath, configObj)
+      .then(resp => resp.json())
+      .then(content => {
+        console.log("posted new qty")
+        debugger
+      })
+    })
+
+
   }
 
 })
