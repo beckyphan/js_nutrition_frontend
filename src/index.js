@@ -307,13 +307,15 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     buttonDiv.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, logDate: document.querySelector('.caldate').innerText}
+
       let configObj = {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(logFoodData)
       }
-
-      let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, logDate: document.querySelector('h3').innerText}
 
       fetch(logFoodsPath, configObj)
       .then(resp => resp.json())
