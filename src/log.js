@@ -10,7 +10,7 @@ class Log {
   }
 
   renderLogDate() {
-    return `<h3 class="caldate">${this.caldate}</h3>`
+    return `<h3 class="caldate ${this.id}">${this.caldate}</h3>`
   }
 
   renderLoggedFoods() {

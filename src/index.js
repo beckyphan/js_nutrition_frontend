@@ -241,6 +241,30 @@ document.addEventListener('DOMContentLoaded', () => {
     updateNutritionSums(log)
   }
 
+  function redisplayUserLog(logObj) {
+    const logData = logObj.data
+    let log = new Log(logData, logData.attributes)
+    const logSpan = currentLogDiv.querySelector('span')
+    logSpan.classList.add("style")
+    logSpan.innerHTML = log.renderLogDate()
+    logSpan.innerHTML += `
+      <div class="percentage-carb">
+        carb
+      </div>
+
+      <div class="percentage-protein">
+        protein
+      </div>
+
+      <div class="percentage-fat">
+        fat
+      </div>
+    `
+    logSpan.innerHTML += log.renderLoggedFoods()
+
+    updateNutritionSums(log)
+  }
+
   function displayFoodsTable() {
     let newSpanElement = document.createElement("span")
     newSpanElement.className = "column2"
@@ -309,7 +333,10 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonDiv.addEventListener("submit", (e) => {
       e.preventDefault()
 
-      let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, logDate: document.querySelector('.caldate').innerText}
+      let clickedTarget = e.srcElement
+      let calDateParam = document.querySelector('.caldate').innerText
+
+      let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, logDate: calDateParam}
 
       let configObj = {
         method: "POST",
@@ -320,8 +347,17 @@ document.addEventListener('DOMContentLoaded', () => {
       fetch(logFoodsPath, configObj)
       .then(resp => resp.json())
       .then(content => {
-        console.log("posted new qty")
-        debugger
+        clickedTarget.parentElement.innerHTML = `<button class="foodItem ${foodId}">Add</button>`
+
+        let showLogId = document.querySelector('.caldate').classList[1]
+        let showLogPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs/${showLogId}`
+
+        fetch(showLogPath)
+        .then(resp => resp.json())
+        .then(logObj => {
+          redisplayUserLog(logObj)
+        })
+
       })
     })
 
