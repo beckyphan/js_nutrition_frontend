@@ -266,15 +266,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateNutritionSums(log) {
     const carbPDV = document.querySelector('.percentage-carb')
     let carbPercent = log.totalCarb / userTargets[0]
-    carbPDV.innerHTML = `carb: ${Math.round(carbPercent * 100) / 100}%`
+    carbPDV.innerHTML = `carb: ${Math.round(carbPercent * 100)}%`
 
     const proteinPDV = document.querySelector('.percentage-protein')
     let proteinPercent = log.totalProtein / userTargets[1]
-    proteinPDV.innerHTML = `protein: ${Math.round(proteinPercent * 100) / 100}%`
+    proteinPDV.innerHTML = `protein: ${Math.round(proteinPercent * 100)}%`
 
     const fatPDV = document.querySelector('.percentage-fat')
     let fatPercent = log.totalFat/ userTargets[2]
-    fatPDV.innerHTML = `fat: ${Math.round(fatPercent * 100) / 100}%`
+    fatPDV.innerHTML = `fat: ${Math.round(fatPercent * 100)}%`
   }
 
 })
