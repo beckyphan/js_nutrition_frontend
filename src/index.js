@@ -160,16 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
           <input type="button" id="logout" value="Log Out" onClick="document.location.reload(true)">
         </span>
         `
-      const logOut = document.querySelector('#logout')
 
-      displayNewLogButton(logOut)
+      displayNewLogButton()
     }
 
 
 
   })
 
-  function displayNewLogButton(logOut) {
+  function displayNewLogButton() {
     currentLogDiv.innerHTML += `
     <div class="columns">
       <span class='column1'>
