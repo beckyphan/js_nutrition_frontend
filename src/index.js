@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function displayUserLog(logObj) {
-    const logData = logObj.data
+    let logData = logObj.data
     let log = new Log(logData, logData.attributes)
     const logSpan = currentLogDiv.querySelector('span')
     logSpan.classList.add("style")
@@ -234,13 +234,14 @@ document.addEventListener('DOMContentLoaded', () => {
         fat
       </div>
     `
+
     logSpan.innerHTML += log.renderLoggedFoods()
 
     let deleteFoodItems = document.querySelectorAll('.delete')
 
     for (element of deleteFoodItems) {
       element.addEventListener("click", (e) => {
-        deleteLoggedFoodItem(e.srcElement.parentElement, e.srcElement.classList[1])
+        deleteLoggedFoodItem(e.srcElement.classList[1])
       })
     }
 
@@ -356,12 +357,19 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  function deleteLoggedFoodItem(p, logFoodId) {
-    p.remove()
-
+  function deleteLoggedFoodItem(logFoodId) {
     let deleteLogFoodPath = `http://localhost:3000/api/v1/log_foods/${logFoodId}`
 
     fetch(deleteLogFoodPath, {method: "DELETE"})
+
+    let showLogId = document.querySelector('.caldate').classList[1]
+    let showLogPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs/${showLogId}`
+
+    fetch(showLogPath)
+    .then(resp => resp.json())
+    .then(logObj => {
+      displayUserLog(logObj)
+    })
 
   }
 
