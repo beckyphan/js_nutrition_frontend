@@ -357,7 +357,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function deleteLoggedFoodItem(p, logFoodId) {
-    // p.remove()
+    p.remove()
+
+    let deleteLogFoodPath = `http://localhost:3000/api/v1/log_foods/${logFoodId}`
+
+    fetch(deleteLogFoodPath, {method: "DELETE"})
+    .then(resp => {
+      debugger
+      resp.json()})
+    .then(obj => {
+      console.log("DELETED!")
+    })
+
   }
 
 })
