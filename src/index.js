@@ -236,33 +236,13 @@ document.addEventListener('DOMContentLoaded', () => {
     `
     logSpan.innerHTML += log.renderLoggedFoods()
 
-    displayFoodsTable()
-
     updateNutritionSums(log)
-  }
 
-  function redisplayUserLog(logObj) {
-    const logData = logObj.data
-    let log = new Log(logData, logData.attributes)
-    const logSpan = currentLogDiv.querySelector('span')
-    logSpan.classList.add("style")
-    logSpan.innerHTML = log.renderLogDate()
-    logSpan.innerHTML += `
-      <div class="percentage-carb">
-        carb
-      </div>
-
-      <div class="percentage-protein">
-        protein
-      </div>
-
-      <div class="percentage-fat">
-        fat
-      </div>
-    `
-    logSpan.innerHTML += log.renderLoggedFoods()
-
-    updateNutritionSums(log)
+    if (!document.querySelector('.column2')) {
+      displayFoodsTable()
+    } else {
+      return
+    }
   }
 
   function displayFoodsTable() {
@@ -328,41 +308,43 @@ document.addEventListener('DOMContentLoaded', () => {
         <input type="submit" name="submit" value="Submit" class="submit" />
       </form>
       `
+      addFoodToLogListener()
     })
   }
 
-  // function addFoodToLog() {
-  //   const addToLog = document.querySelector('.addToLog').
-  // }
+  function addFoodToLogListener() {
+    document.querySelector('.addToLog').addEventListener("submit", (e) => {
+      e.preventDefault()
+      addFoodToLog(e)
+    })
+  }
 
-  // buttonDiv.addEventListener("submit", (e) => {
-  //   e.preventDefault()
-  //   let clickedTarget = e.srcElement
-  //   let calDateParam = document.querySelector('.caldate').innerText
-  //
-  //   let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, logDate: calDateParam}
-  //
-  //   let configObj = {
-  //     method: "POST",
-  //     headers: {"Content-Type": "application/json"},
-  //     body: JSON.stringify(logFoodData)
-  //   }
-  // })
-  //
-  // fetch(logFoodsPath, configObj)
-  // .then(resp => resp.json())
-  // .then(content => {
-  //   clickedTarget.parentElement.innerHTML = `<button class="foodItem ${foodId}">Add</button>`
-  //
-  //   let showLogId = document.querySelector('.caldate').classList[1]
-  //   let showLogPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs/${showLogId}`
-  //
-  //   fetch(showLogPath)
-  //   .then(resp => resp.json())
-  //   .then(logObj => {
-  //     // redisplayUserLog(logObj)
-  //   })
-  //
-  // })
+  function addFoodToLog(e) {
+    let clickedTarget = e.srcElement
+    let foodId = e.srcElement.classList[1]
+    let calDateParam = document.querySelector('.caldate').innerText
+    let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, logDate: calDateParam}
+
+    let configObj = {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(logFoodData)
+      }
+
+    fetch(logFoodsPath, configObj)
+    .then(resp => resp.json())
+    .then(content => {
+      let showLogId = document.querySelector('.caldate').classList[1]
+      let showLogPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs/${showLogId}`
+
+      fetch(showLogPath)
+      .then(resp => resp.json())
+      .then(logObj => {
+        displayUserLog(logObj)
+      })
+      clickedTarget.parentElement.innerHTML = `<button class="foodItem ${foodId}">Add</button>`
+
+    })
+  }
 
 })
