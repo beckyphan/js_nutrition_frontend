@@ -342,6 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(logObj => {
         displayUserLog(logObj)
       })
+      
       clickedTarget.parentElement.innerHTML = `<button class="foodItem ${foodId}">Add</button>`
 
     })
