@@ -329,41 +329,40 @@ document.addEventListener('DOMContentLoaded', () => {
       </form>
       `
     })
-
-    buttonDiv.addEventListener("submit", (e) => {
-      e.preventDefault()
-      console.log(e)
-      // correctly adds quantity of first submitted Food added to current log 
-      // but all subsequent quantity adds duplicate the first value input despite showing values in debugger and controller
-      // need to troubleshoot;
-    //   let clickedTarget = e.srcElement
-    //   let calDateParam = document.querySelector('.caldate').innerText
-    //
-    //   let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, logDate: calDateParam}
-    //
-    //   let configObj = {
-    //     method: "POST",
-    //     headers: {"Content-Type": "application/json"},
-    //     body: JSON.stringify(logFoodData)
-    //   }
-    //
-    //   fetch(logFoodsPath, configObj)
-    //   .then(resp => resp.json())
-    //   .then(content => {
-    //     clickedTarget.parentElement.innerHTML = `<button class="foodItem ${foodId}">Add</button>`
-    //
-    //     let showLogId = document.querySelector('.caldate').classList[1]
-    //     let showLogPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs/${showLogId}`
-    //
-    //     fetch(showLogPath)
-    //     .then(resp => resp.json())
-    //     .then(logObj => {
-    //       redisplayUserLog(logObj)
-    //     })
-    //
-    //   })
-    // })
-
   }
+
+  // function addFoodToLog() {
+  //   const addToLog = document.querySelector('.addToLog').
+  // }
+
+  // buttonDiv.addEventListener("submit", (e) => {
+  //   e.preventDefault()
+  //   let clickedTarget = e.srcElement
+  //   let calDateParam = document.querySelector('.caldate').innerText
+  //
+  //   let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, logDate: calDateParam}
+  //
+  //   let configObj = {
+  //     method: "POST",
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify(logFoodData)
+  //   }
+  // })
+  //
+  // fetch(logFoodsPath, configObj)
+  // .then(resp => resp.json())
+  // .then(content => {
+  //   clickedTarget.parentElement.innerHTML = `<button class="foodItem ${foodId}">Add</button>`
+  //
+  //   let showLogId = document.querySelector('.caldate').classList[1]
+  //   let showLogPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs/${showLogId}`
+  //
+  //   fetch(showLogPath)
+  //   .then(resp => resp.json())
+  //   .then(logObj => {
+  //     // redisplayUserLog(logObj)
+  //   })
+  //
+  // })
 
 })
