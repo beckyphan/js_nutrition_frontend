@@ -236,6 +236,14 @@ document.addEventListener('DOMContentLoaded', () => {
     `
     logSpan.innerHTML += log.renderLoggedFoods()
 
+    let deleteFoodItems = document.querySelectorAll('.delete')
+
+    for (element of deleteFoodItems) {
+      element.addEventListener("click", (e) => {
+        deleteLoggedFoodItem(e.srcElement.parentElement, e.srcElement.classList[1])
+      })
+    }
+
     updateNutritionSums(log)
 
     if (!document.querySelector('.column2')) {
@@ -342,10 +350,14 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(logObj => {
         displayUserLog(logObj)
       })
-      
+
       clickedTarget.parentElement.innerHTML = `<button class="foodItem ${foodId}">Add</button>`
 
     })
+  }
+
+  function deleteLoggedFoodItem(p, logFoodId) {
+    // p.remove()
   }
 
 })

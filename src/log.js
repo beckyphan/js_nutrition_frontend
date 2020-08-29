@@ -17,7 +17,7 @@ class Log {
   renderLoggedFoods() {
     let loggedFoods = ""
     for (let i = 0; i < this.loggedFoods.length; i++) {
-      loggedFoods += `<p>${this.loggedFoods[i]} <button class="delete ${this.relationships[i]}">X</button></p>`
+      loggedFoods += `<p>${this.loggedFoods[i]} <button class="delete ${this.relationships[i].id}">X</button></p>`
     }
     return loggedFoods
   }
