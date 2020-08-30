@@ -169,13 +169,24 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   function displayNewLogButton() {
-    currentLogDiv.innerHTML += `
-    <div class="columns">
-      <span class='column1'>
-        <button id='newLog'>New Log/Show Log</button>
-      </span>
-    </div>
-    `
+
+    if (!document.querySelector('.caldate')) {
+      currentLogDiv.innerHTML += `
+      <div class="columns">
+        <span class='column1'>
+          <button id='newLog'>New Log</button>
+        </span>
+      </div>
+      `
+    } else {
+      currentLogDiv.innerHTML += `
+      <div class="columns">
+        <span class='column1'>
+          <button id='newLog'>Change Log Date</button>
+        </span>
+      </div>
+      `
+    }
 
     const newLogButton = document.querySelector('#newLog')
 
@@ -244,10 +255,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateNutritionSums(log)
 
+    if (!document.querySelector('#newLog')) {
+      displayNewLogButton()
+    }
+
     if (!document.querySelector('.column2')) {
       displayFoodsTable()
-    } else {
-      return
     }
   }
 
