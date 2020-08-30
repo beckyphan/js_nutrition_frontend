@@ -205,6 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
       </form>
     `
 
+    hideAddFoodToLog()
+
     logDivFirstSpan.addEventListener("submit", (e) => {
       e.preventDefault()
       let caldate = e.srcElement[0].value
@@ -288,6 +290,33 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+  function listenToAddFood() {
+    let location = currentLogDiv.querySelector('.column2')
+    location.addEventListener("click", (e) => {
+      const foodItemButton = e.target.nodeName === "BUTTON"
+      if (!foodItemButton) {
+        return;
+      } else {
+        showAddQuantity(e.srcElement, e.srcElement.parentElement)
+      }
+    })
+  }
+
+  function hideAddFoodToLog() {
+    let addFoodToLogButtons = document.querySelectorAll('.foodItem')
+    for (element of addFoodToLogButtons) {
+      element.classList.add("hide")
+    }
+  }
+
+  function showAddFoodToLog() {
+    let addFoodToLogButtons = document.querySelectorAll('.hideFoodItem')
+    for (element of addFoodToLogButtons) {
+      element.classList.remove("hide")
+    }
+    listenToAddFood()
+  }
+
   function updateNutritionSums(log) {
     const carbPDV = document.querySelector('.percentage-carb')
     let carbPercent = log.totalCarb / userTargets[0]
@@ -300,18 +329,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const fatPDV = document.querySelector('.percentage-fat')
     let fatPercent = log.totalFat / userTargets[2]
     fatPDV.innerHTML = `fat: ${Math.round(fatPercent * 1000) / 10}%`
-  }
-
-  function listenToAddFood() {
-    let location = currentLogDiv.querySelector('.column2')
-    location.addEventListener("click", (e) => {
-      const foodItemButton = e.target.nodeName === "BUTTON"
-      if (!foodItemButton) {
-        return;
-      } else {
-        showAddQuantity(e.srcElement, e.srcElement.parentElement)
-      }
-    })
   }
 
   function showAddQuantity(button, buttonDiv) {
@@ -337,9 +354,6 @@ document.addEventListener('DOMContentLoaded', () => {
       addFoodToLog(e)
     })
   }
-
-
-  // error in displaying userlog after deleting an item; cannot find log id
 
   function addFoodToLog(e) {
     let clickedTarget = e.srcElement
