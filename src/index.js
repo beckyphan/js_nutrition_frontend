@@ -233,9 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fat
       </div>
     `
-
     logSpan.innerHTML += log.renderLoggedFoods()
-
     let deleteFoodItems = document.querySelectorAll('.delete')
 
     for (element of deleteFoodItems) {
@@ -327,6 +325,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
+
+  // error in displaying userlog after deleting an item; cannot find log id
+
   function addFoodToLog(e) {
     let clickedTarget = e.srcElement
     let foodId = e.srcElement.classList[1]
@@ -358,18 +359,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function deleteLoggedFoodItem(logFoodId) {
     let deleteLogFoodPath = `http://localhost:3000/api/v1/log_foods/${logFoodId}`
-
     fetch(deleteLogFoodPath, {method: "DELETE"})
-
-    let showLogId = document.querySelector('.caldate').classList[1]
-    let showLogPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs/${showLogId}`
-
-    fetch(showLogPath)
     .then(resp => resp.json())
-    .then(logObj => {
-      displayUserLog(logObj)
+    .then(obj => {
+      displayUserLog(obj)
     })
-
   }
 
 })
