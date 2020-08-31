@@ -263,6 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!document.querySelector('.column2')) {
       displayFoodsTable()
+    } else {
+      showAddFoodToLog()
     }
   }
 
@@ -310,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showAddFoodToLog() {
-    let addFoodToLogButtons = document.querySelectorAll('.hideFoodItem')
+    let addFoodToLogButtons = document.querySelectorAll('.foodItem')
     for (element of addFoodToLogButtons) {
       element.classList.remove("hide")
     }

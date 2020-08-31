@@ -128,5 +128,5 @@ span.column1, span.column2 {
 }
 
 .hide {
-  display: none;
+  visibility: hidden;
 }
