@@ -147,9 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fetch(usersPath, configObj)
       .then((resp) => resp.json())
       .then((userObj) => {
-        debugger
         if (!!userObj.errors) {
-          console.log(userObj)
           let registrationError = document.createElement("p")
           registrationError.classList.add("error")
           registrationError.innerText = `${userObj.errors[0]}`
