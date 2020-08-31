@@ -122,9 +122,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       fetch(loginPath, configObj)
-      .then(resp => resp.json())
-      .then(userObj => {
-        displayUserProfile(userObj)
+      .then((resp) => resp.json())
+      .then((userObj) => {
+        if (!!userObj.errors) {
+          let loginError = document.createElement("p")
+          loginError.classList.add("error")
+          loginError.innerText = `${userObj.errors}`
+          document.querySelector('h2').appendChild(loginError)
+        } else {
+          displayUserProfile(userObj)
+        }
       })
     }
 
@@ -138,9 +145,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       fetch(usersPath, configObj)
-      .then(resp => resp.json())
-      .then(userObj => {
-        displayUserProfile(userObj)
+      .then((resp) => resp.json())
+      .then((userObj) => {
+        debugger
+        if (!!userObj.errors) {
+          console.log(userObj)
+          let registrationError = document.createElement("p")
+          registrationError.classList.add("error")
+          registrationError.innerText = `${userObj.errors[0]}`
+          document.querySelector('h2').appendChild(registrationError)
+        } else {
+          displayUserProfile(userObj)
+        }
       })
     }
 
@@ -220,8 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       fetch(logPath, configObj)
-      .then(resp => resp.json())
-      .then(logObj => {
+      .then((resp )=> resp.json())
+      .then((logObj) => {
         displayUserLog(logObj)
       })
     })
@@ -247,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `
     logSpan.innerHTML += log.renderLoggedFoods()
+
     let deleteFoodItems = document.querySelectorAll('.delete')
 
     for (element of deleteFoodItems) {
@@ -282,8 +299,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function displayFoodItems() {
     fetch(foodsPath)
-    .then(resp => resp.json())
-    .then(foodsObj => {
+    .then((resp) => resp.json())
+    .then((foodsObj) => {
       let location = currentLogDiv.querySelector('.column2')
       for (element of foodsObj.data) {
         let uniqFood = new Food(element, element.attributes)
@@ -337,8 +354,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let foodId = button.classList[1]
 
     fetch(foodsPath)
-    .then(resp => resp.json())
-    .then(obj => {
+    .then((resp) => resp.json())
+    .then((obj) => {
       buttonDiv.innerHTML = `
       <form class="addToLog ${button.classList[1]}">
         <label for="[log_food]quantity">Qty:</label>
@@ -370,14 +387,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
     fetch(logFoodsPath, configObj)
-    .then(resp => resp.json())
-    .then(content => {
+    .then((resp) => resp.json())
+    .then((content) => {
       let showLogId = document.querySelector('.caldate').classList[1]
       let showLogPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs/${showLogId}`
 
       fetch(showLogPath)
-      .then(resp => resp.json())
-      .then(logObj => {
+      .then((resp) => resp.json())
+      .then((logObj) => {
         displayUserLog(logObj)
       })
 
@@ -389,8 +406,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function deleteLoggedFoodItem(logFoodId) {
     let deleteLogFoodPath = `http://localhost:3000/api/v1/log_foods/${logFoodId}`
     fetch(deleteLogFoodPath, {method: "DELETE"})
-    .then(resp => resp.json())
-    .then(obj => {
+    .then((resp) => resp.json())
+    .then((obj) => {
       displayUserLog(obj)
     })
   }

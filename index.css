@@ -130,3 +130,12 @@ span.column1, span.column2 {
 .hide {
   visibility: hidden;
 }
+
+p.error {
+  color: red;
+}
+
+.error {
+  border-color: red;
+  padding: 10px;
+}
