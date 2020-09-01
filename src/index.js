@@ -324,6 +324,10 @@ document.addEventListener('DOMContentLoaded', () => {
     for (element of addFoodToLogButtons) {
       element.classList.add("hide")
     }
+    let addQtyToLog = document.querySelectorAll('.addToLog')
+    for (element of addQtyToLog) {
+      element.classList.add("hide")
+    }
   }
 
   function showAddFoodToLog() {
@@ -332,6 +336,12 @@ document.addEventListener('DOMContentLoaded', () => {
       element.classList.remove("hide")
     }
     listenToAddFood()
+
+    let addQtyToLog = document.querySelectorAll('.addToLog')
+    for (element of addQtyToLog) {
+      element.classList.remove("hide")
+    }
+    addFoodToLogListener()
   }
 
   function updateNutritionSums(log) {
@@ -357,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
       buttonDiv.innerHTML = `
       <form class="addToLog ${button.classList[1]}">
         <label for="[log_food]quantity">Qty:</label>
-        <input type="number" step="0.25" min="0" name="[log_food]quantity" value="" placeholder="${obj.data[foodId-1].attributes.unit}" required="required"/>
+        <input type="number" step="0.25" min="0" name="[log_food]quantity" value="" placeholder="${obj.data[foodId].attributes.unit}" required="required"/>
         <input type="submit" name="submit" value="Submit" class="submit" />
       </form>
       `
