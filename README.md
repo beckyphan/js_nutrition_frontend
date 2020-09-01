@@ -37,6 +37,7 @@ Future features may include:
 - Adding admin users to be able to create/add/update Foods list
 - Updating design of nutrition sum bars to display as filled progress bars
 - Allow user to choose the background image of their dashboard
+- Consider use of [USDA.gov FoodData Central API](https://fdc.nal.usda.gov/api-guide.html)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
