@@ -1,7 +1,8 @@
-const usersPath = "http://localhost:3000/api/v1/users"
-const loginPath = "http://localhost:3000/api/v1/login"
-const foodsPath = "http://localhost:3000/api/v1/foods"
-const logFoodsPath = "http://localhost:3000/api/v1/log_foods"
+const endPoint = "http://localhost:3000"
+const usersPath = endPoint + "/api/v1/users"
+const loginPath = endPoint + "/api/v1/login"
+const foodsPath = endPoint + "/api/v1/foods"
+const logFoodsPath = endPoint + "/api/v1/log_foods"
 
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav')
@@ -225,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault()
       let caldate = e.srcElement[0].value
       const newLogData = {log: {caldate}}
-      const logPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs`
+      const logPath = endPoint + `/api/v1/users/${currentUserId}/logs`
 
       let configObj = {
         method: "POST",
@@ -398,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then((resp) => resp.json())
     .then((content) => {
       let showLogId = document.querySelector('.caldate').classList[1]
-      let showLogPath = `http://localhost:3000/api/v1/users/${currentUserId}/logs/${showLogId}`
+      let showLogPath = endPoint + `/api/v1/users/${currentUserId}/logs/${showLogId}`
 
       fetch(showLogPath)
       .then((resp) => resp.json())
@@ -412,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function deleteLoggedFoodItem(logFoodId) {
-    let deleteLogFoodPath = `http://localhost:3000/api/v1/log_foods/${logFoodId}`
+    let deleteLogFoodPath = endPoint + `/api/v1/log_foods/${logFoodId}`
     fetch(deleteLogFoodPath, {method: "DELETE"})
     .then((resp) => resp.json())
     .then((obj) => {
