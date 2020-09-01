@@ -357,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
       buttonDiv.innerHTML = `
       <form class="addToLog ${button.classList[1]}">
         <label for="[log_food]quantity">Qty:</label>
-        <input type="number" name="[log_food]quantity" value="" placeholder="${obj.data[foodId-1].attributes.unit}" required="required"/>
+        <input type="number" step="0.25" min="0" name="[log_food]quantity" value="" placeholder="${obj.data[foodId-1].attributes.unit}" required="required"/>
         <input type="submit" name="submit" value="Submit" class="submit" />
       </form>
       `
