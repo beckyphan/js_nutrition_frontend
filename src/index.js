@@ -365,20 +365,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showAddQuantity(button, buttonDiv) {
     let foodId = button.classList[1]
+    let foodUnit = Food.findFood(foodId).unit
 
-    fetch(foodsPath)
-    .then((resp) => resp.json())
-    .then((obj) => {
-      buttonDiv.innerHTML = `
+    buttonDiv.innerHTML = `
       <form class="addToLog ${button.classList[1]}">
         <label for="[log_food]quantity">Qty:</label>
-        <input type="number" step="0.25" min="0" name="[log_food]quantity" value="" placeholder="${obj.data[foodId].attributes.unit}" required="required"/>
+        <input type="number" step="0.25" min="0" name="[log_food]quantity" value="" placeholder="${foodUnit}" required="required"/>
         <input type="submit" name="submit" value="Submit" class="submit" />
       </form>
       `
+
       addFoodToLogListener()
-    })
-    .catch(error => console.error(error))
   }
 
   function addFoodToLogListener() {

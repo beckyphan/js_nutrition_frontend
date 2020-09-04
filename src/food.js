@@ -1,5 +1,3 @@
-const allFoods = []
-
 class Food {
 
   constructor(food, foodAttributes) {
@@ -11,7 +9,7 @@ class Food {
     this.protein = foodAttributes.protein
     this.fat = foodAttributes.fat
 
-    allFoods.push(this)
+    Food.all.push(this)
   }
 
   renderFoodCard(location) {
@@ -27,4 +25,10 @@ class Food {
     `
   }
 
+  static findFood(foodId) {
+    return this.all.find( food => food.id === foodId)
+  }
+
 }
+
+Food.all = []
