@@ -279,7 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!document.querySelector('#newLog')) {
       displayNewLogButton()
     }
-    debugger
     if (!document.querySelector('.column2')) {
       displayFoodsTable()
     } else if (document.querySelector('.hide')) {
@@ -338,16 +337,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showAddFoodToLog() {
-    let addFoodToLogButtons = document.querySelectorAll('.foodItem')
-    for (element of addFoodToLogButtons) {
-      element.classList.remove("hide")
-    }
+    document.querySelectorAll('.foodItem').forEach( element => element.classList.remove("hide"))
     listenToAddFood()
 
-    let addQtyToLog = document.querySelectorAll('.addToLog')
-    for (element of addQtyToLog) {
-      element.classList.remove("hide")
-    }
+    document.querySelectorAll('.addToLog').forEach( element => element.classList.remove("hide"))
+
     addFoodToLogListener()
   }
 
