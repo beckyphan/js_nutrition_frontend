@@ -279,10 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!document.querySelector('#newLog')) {
       displayNewLogButton()
     }
-
+    debugger
     if (!document.querySelector('.column2')) {
       displayFoodsTable()
-    } else if (!document.querySelector('.foodItem')) {
+    } else if (document.querySelector('.hide')) {
       showAddFoodToLog()
     } else {
       return
