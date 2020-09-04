@@ -282,8 +282,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!document.querySelector('.column2')) {
       displayFoodsTable()
-    } else {
+    } else if (!document.querySelector('.foodItem')) {
       showAddFoodToLog()
+    } else {
+      return
     }
   }
 
