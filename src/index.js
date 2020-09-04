@@ -380,7 +380,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function addFoodToLogListener() {
-    document.querySelector('.addToLog').addEventListener("submit", addFoodToLogAction)
+    if (document.querySelector('.addToLog')) {
+      document.querySelector('.addToLog').addEventListener("submit", addFoodToLogAction)
+    }
   }
 
   function addFoodToLog(e) {
