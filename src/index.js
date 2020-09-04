@@ -266,15 +266,9 @@ document.addEventListener('DOMContentLoaded', () => {
     `
     logSpan.innerHTML += log.renderLoggedFoods()
 
-    let deleteFoodItems = document.querySelectorAll('.delete')
-
-    for (element of deleteFoodItems) {
-      element.addEventListener("click", (e) => {
-        deleteLoggedFoodItem(e.srcElement.classList[1])
-      })
-    }
-
     updateNutritionSums(log)
+
+    listenForDeleteFoodFromLog()
 
     if (!document.querySelector('#newLog')) {
       displayNewLogButton()
@@ -285,6 +279,16 @@ document.addEventListener('DOMContentLoaded', () => {
       showAddFoodToLog()
     } else {
       return
+    }
+  }
+
+  function listenForDeleteFoodFromLog() {
+    let deleteFoodItems = document.querySelectorAll('.delete')
+
+    for (element of deleteFoodItems) {
+      element.addEventListener("click", (e) => {
+        deleteLoggedFoodItem(e.srcElement.classList[1])
+      })
     }
   }
 
