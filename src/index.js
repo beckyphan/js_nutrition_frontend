@@ -283,13 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function listenForDeleteFoodFromLog() {
-    let deleteFoodItems = document.querySelectorAll('.delete')
-
-    for (element of deleteFoodItems) {
-      element.addEventListener("click", (e) => {
-        deleteLoggedFoodItem(e.srcElement.classList[1])
-      })
-    }
+    document.querySelectorAll('.delete').forEach(element => element.addEventListener("click", deleteFood))
   }
 
   function displayFoodsTable() {
@@ -422,7 +416,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(error => console.error(error))
   }
 
-  function deleteLoggedFoodItem(logFoodId) {
+  let deleteFood = function deleteLoggedFoodItem(event) {
+    let logFoodId = event.srcElement.classList[1]
     let deleteLogFoodPath = endPoint + `/api/v1/log_foods/${logFoodId}`
     fetch(deleteLogFoodPath, {method: "DELETE"})
     .then((resp) => resp.json())
