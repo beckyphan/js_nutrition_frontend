@@ -392,8 +392,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function addFoodToLog(e) {
     let clickedTarget = e.srcElement
     let foodId = e.srcElement.classList[1]
-    let calDateParam = document.querySelector('.caldate').innerText
-    let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, logDate: calDateParam}
+    let logId = document.querySelector('.caldate').classList[1]
+    let logFoodData = {food_id: foodId, quantity: e.srcElement[0].value, log_id: logId}
 
     let configObj = {
         method: "POST",
