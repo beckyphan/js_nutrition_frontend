@@ -268,8 +268,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateNutritionSums(log)
 
-    listenForDeleteFoodFromLog()
     if (document.querySelector('.delete')) {
+      // despite being able to locate all buttons with class=delete, unable to add addEventListener to button upon initial display
+      // if change log date, or after adding another food to log --> event listener functions as expected
+      listenForDeleteFoodFromLog()
+    }
 
     if (!document.querySelector('#newLog')) {
       displayNewLogButton()
