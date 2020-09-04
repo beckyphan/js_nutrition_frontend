@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
           displayUserProfile(userObj)
         }
       })
+      .catch(error => console.error(error))
     }
 
     function registerUser(name, email, carb_grams, protein_grams, fat_grams, password) {
@@ -157,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
           displayUserProfile(userObj)
         }
       })
+      .catch(error => console.error(error))
     }
 
     function displayUserProfile(userObj) {
@@ -239,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((logObj) => {
         displayUserLog(logObj)
       })
+      .catch(error => console.error(error))
     })
   }
 
@@ -306,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         uniqFood.renderFoodCard(location)
       }
     })
+    .catch(error => console.error(error))
   }
 
   function listenToAddFood() {
@@ -374,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `
       addFoodToLogListener()
     })
+    .catch(error => console.error(error))
   }
 
   function addFoodToLogListener() {
@@ -406,10 +411,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((logObj) => {
         displayUserLog(logObj)
       })
+      .catch(error => console.error(error))
 
       clickedTarget.parentElement.innerHTML = `<button class="foodItem ${foodId}">Add</button>`
 
     })
+    .catch(error => console.error(error))
   }
 
   function deleteLoggedFoodItem(logFoodId) {
@@ -419,6 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then((obj) => {
       displayUserLog(obj)
     })
+    .catch(error => console.error(error))
   }
 
 })
