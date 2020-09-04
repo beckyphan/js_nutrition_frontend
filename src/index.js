@@ -315,14 +315,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function listenToAddFood() {
     let location = currentLogDiv.querySelector('.column2')
-    location.addEventListener("click", (e) => {
-      const foodItemButton = e.target.nodeName === "BUTTON"
-      if (!foodItemButton) {
-        return;
-      } else {
-        showAddQuantity(e.srcElement, e.srcElement.parentElement)
-      }
-    })
+    location.addEventListener("click", showQuantIfButton)
+  }
+
+  let showQuantIfButton = function(e) {
+    const foodItemButton = e.target.nodeName === "BUTTON"
+    if (!foodItemButton) {
+      return;
+    } else {
+      showAddQuantity(e.srcElement, e.srcElement.parentElement)
+    }
   }
 
   function hideAddFoodToLog() {
