@@ -269,6 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateNutritionSums(log)
 
     listenForDeleteFoodFromLog()
+    if (document.querySelector('.delete')) {
 
     if (!document.querySelector('#newLog')) {
       displayNewLogButton()
