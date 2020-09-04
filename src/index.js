@@ -380,11 +380,13 @@ document.addEventListener('DOMContentLoaded', () => {
       addFoodToLogListener()
   }
 
-  function addFoodToLogListener() {
-    document.querySelector('.addToLog').addEventListener("submit", (e) => {
+  let addFoodToLogAction = (e) => {
       e.preventDefault()
       addFoodToLog(e)
-    })
+  }
+
+  function addFoodToLogListener() {
+    document.querySelector('.addToLog').addEventListener("submit", addFoodToLogAction)
   }
 
   function addFoodToLog(e) {
