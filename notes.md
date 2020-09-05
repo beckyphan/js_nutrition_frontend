@@ -1,5 +1,6 @@
 Next steps:
 other & stretch:
+- create an Adapter class to refactor AJAX requests
 - user can update their profile to change their nutrition targets
 - if user wants to update quantity of foods consumed in their current food log, they can edit quantity (food_log#update)
 - if user has an existing log for currentDate, then display upon login
