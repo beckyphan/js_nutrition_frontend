@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(error => console.error(error))
     }
 
-    function registerUser(name, email, carb_grams, protein_grams, fat_grams, password) {
+  function registerUser(name, email, carb_grams, protein_grams, fat_grams, password) {
       const bodyData = {user: {name, email, carb_grams, protein_grams, fat_grams, password} }
 
       let configObj = {
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(error => console.error(error))
     }
 
-    function displayUserProfile(userObj) {
+  function displayUserProfile(userObj) {
       const userData = userObj.user.data
       let user = new User(userData,userData.attributes)
       currentUserId = user.id
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
       userProf.innerHTML = user.renderUser()
     }
 
-    function displayLogoutButton() {
+  function displayLogoutButton() {
       nav.innerHTML = `
         <span>
           <input type="button" id="logout" value="Log Out" onClick="document.location.reload(true)">
