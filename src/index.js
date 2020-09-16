@@ -304,7 +304,15 @@ document.addEventListener('DOMContentLoaded', () => {
       let location = currentLogDiv.querySelector('.column2')
       for (element of foodsObj.data) {
         let uniqFood = new Food(element, element.attributes)
-        uniqFood.renderFoodCard(location)
+        // uniqFood.renderFoodCard(location)
+      }
+
+      let sortedFoods = Food.all.sort((a, b) => b.carb - a.carb)
+
+      for (element of sortedFoods) {
+        // debugger
+        let item = Food.findFood(element.id)
+        item.renderFoodCard(location)
       }
     })
     .catch(error => console.error(error))
