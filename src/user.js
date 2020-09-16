@@ -7,22 +7,22 @@ class User {
     this.id = user.id
     this.name = userAttributes.name
     this.email = userAttributes.email
-    this.carb_grams = userAttributes.carb_grams
-    this.protein_grams = userAttributes.protein_grams
-    this.fat_grams = userAttributes.fat_grams
+    this.carbGrams = userAttributes.carb_grams
+    this.proteinGrams = userAttributes.protein_grams
+    this.fatGrams = userAttributes.fat_grams
 
-    userTargets.push(this.carb_grams)
-    userTargets.push(this.protein_grams)
-    userTargets.push(this.fat_grams)
+    userTargets.push(this.carbGrams)
+    userTargets.push(this.proteinGrams)
+    userTargets.push(this.fatGrams)
   }
 
   renderUser() {
     return `
       <h3>Welcome, ${this.name}! </h3>
       <div class="nutritionTargets">
-        <span>Carbs: ${this.carb_grams} grams</span>
-        <span>Protein: ${this.protein_grams} grams</span>
-        <span>Fat: ${this.fat_grams} grams</span>
+        <span>Carbs: ${this.carbGrams} grams</span>
+        <span>Protein: ${this.proteinGrams} grams</span>
+        <span>Fat: ${this.fatGrams} grams</span>
       </div>
     `
   }
