@@ -1,4 +1,4 @@
-const endPoint = "http://localhost:3000"
+const endPoint = "https://mynewtrition-api.herokuapp.com"
 const usersPath = endPoint + "/api/v1/users"
 const loginPath = endPoint + "/api/v1/login"
 const foodsPath = endPoint + "/api/v1/foods"
